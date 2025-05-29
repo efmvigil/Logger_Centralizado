@@ -2,7 +2,7 @@ package br.com.logger_centralizado;
 
 public class Logger {
 
-    private static Logger instance;
+    private static volatile Logger instance;
 
     private Logger(){}
 
@@ -19,14 +19,19 @@ public class Logger {
     }
 
     public class Log {
+
         private String message;
 
         private Log(String message) {
             this.message = message;
         }
+
+        public String getMessage() {
+            return message;
+        }
     }
 
-    private Log generateLog(String message) {
+    public Log generateLog(String message) {
         return new Log(message);
     }
 }
