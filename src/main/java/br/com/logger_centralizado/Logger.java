@@ -18,11 +18,11 @@ public class Logger {
         return instance;
     }
 
-    public class Log {
+    public class LogImpl implements Log {
 
         private String message;
 
-        private Log(String message) {
+        private LogImpl(String message) {
             this.message = message;
         }
 
@@ -32,6 +32,6 @@ public class Logger {
     }
 
     public Log generateLog(String message) {
-        return new Log(message);
+        return new LogImpl(message);
     }
 }
