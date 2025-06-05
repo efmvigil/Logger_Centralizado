@@ -3,14 +3,14 @@ package br.com.logger_centralizado.Decorator;
 import br.com.logger_centralizado.Log;
 
 public abstract class LogDecorator implements Log {
-    private Log wrappedLog;
+    protected Log inner;
 
     public LogDecorator(Log log) {
-        this.wrappedLog = log;
+        this.inner = log;
     }
 
     @Override
     public String getMessage() {
-        return wrappedLog.getMessage();
+        return inner.getMessage();
     }
 }

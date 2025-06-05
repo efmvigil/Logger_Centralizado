@@ -1,13 +1,15 @@
 package br.com.logger_centralizado.Decorator;
 
 import br.com.logger_centralizado.Log;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import br.com.logger_centralizado.LogProperties;
 
 public class JsonFormatDecorator extends LogDecorator{
+
+    private final LogProperties propertiesObject;
+
     public JsonFormatDecorator(Log log) {
         super(log);
+        this.propertiesObject = buildObject(log);
     }
 
     @Override
@@ -15,10 +17,12 @@ public class JsonFormatDecorator extends LogDecorator{
         return getTimeStamp() + super.getMessage();
     }
 
-    private String getTimeStamp() {
-        LocalDateTime dateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = dateTime.format(formatter);
-        return "[" + formattedDateTime + "] ";
+    private LogProperties buildObject(Log log) {
+        LogProperties properties = new LogProperties();
+        if (log instanceof TimeStampDecorator timeStampDecorator) properties.setTimeStamp(timeStampDecorator.getTimeStamp());
+        if (log instanceof LevelDecorator levelDecorator) properties.setLevel(levelDecorator.getLevel());
+        if (log instanceof ContextDecorator contextDecorator) properties.setContext(contextDecorator.getContext());
+
+        return properties;
     }
 }

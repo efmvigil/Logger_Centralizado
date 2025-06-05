@@ -12,6 +12,10 @@ public class LevelDecorator extends LogDecorator{
         this.level = level;
     }
 
+    protected LogLevel getLevel() {
+        return level;
+    }
+
     @Override
     public String getMessage() {
         return "[" + level.name() + "] " + super.getMessage();
