@@ -18,7 +18,7 @@ public class ColorDecorator extends LogDecorator{
     }
 
     private LogLevel extractInnerLevel() {
-        if (super.inner instanceof LevelDecorator levelDecorator) {
+        if (super.getInner() instanceof LevelDecorator levelDecorator) {
             return levelDecorator.getLevel();
         } else return null;
     }
