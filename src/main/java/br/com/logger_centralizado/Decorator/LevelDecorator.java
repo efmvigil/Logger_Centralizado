@@ -12,7 +12,7 @@ public class LevelDecorator extends LogDecorator{
         this.level = level;
     }
 
-    protected LogLevel getLevel() {
+    public LogLevel getLevel() {
         return level;
     }
 

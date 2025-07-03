@@ -1,8 +1,14 @@
 package br.com.logger_centralizado;
 
+import br.com.logger_centralizado.Observer.LogObserver;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Logger {
 
     private static volatile Logger instance;
+    private final List<LogObserver> observers = new ArrayList<>();
 
     private Logger(){}
 
@@ -16,6 +22,10 @@ public class Logger {
         }
 
         return instance;
+    }
+
+    public void addObserver(LogObserver observer) {
+        observers.add(observer);
     }
 
     public class LogImpl implements Log {

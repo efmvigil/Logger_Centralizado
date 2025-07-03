@@ -19,7 +19,7 @@ public class TimeStampDecorator extends LogDecorator {
         return "[" + getTimeStamp() + "] " + super.getMessage();
     }
 
-    protected String getTimeStamp() {
+    public String getTimeStamp() {
         return timeStamp;
     }
 
