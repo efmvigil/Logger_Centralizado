@@ -35,3 +35,7 @@ O padrão Observer foi utilizado para permitir que diversos componentes possam r
 Com isso temos um sistema desacoplado, em que o logger principal não precisa conhecer a lógica interna de seus observadores. Novos destinos de log podem ser adicionados ou removidos sem impactar diretamente o resto do código, o que promove maior escalabilidade e facilidade na manutenção.
 
 Este padrão foi utilizado no projeto a partir da criação da interface LogObserver que é implementada pelas diferentes classes de observadores, as quais podem ser adicionadas à lista de observadores armazenada na propriedade 'observers' do singleton de Logger, de forma que a cada emissão de log todos os observadores são notificados simultaneamente e distribuem o log para diversos destinos.
+
+![log-observer-no-codigo](screenshots/LogObserver.png)
+
+![exemplo-observer-no-codigo](screenshots/ConsoleLogObserver.png)
